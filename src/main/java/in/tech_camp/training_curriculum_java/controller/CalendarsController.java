@@ -66,8 +66,11 @@ public class CalendarsController {
           }
       }
 
+      int dayIndex = currentDate.getDayOfWeek().getValue() % 7;
+
       day_map.put("month", currentDate.getMonthValue());
       day_map.put("date", currentDate.getDayOfMonth());
+      day_map.put("weekday", wdays[dayIndex]);
       day_map.put("plans", todayPlans);
 
       weekDays.add(day_map);
