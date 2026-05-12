@@ -27,7 +27,7 @@ public class CalendarsController {
   private final PlanRepository planRepository;
 
   // 1週間のカレンダーと予定が表示されるページ
-  @GetMapping("/")
+  @GetMapping("/calendars")
   public String index(Model model) {
     model.addAttribute("planForm", new PlanForm());
     List<Map<String, Object>> weekDays = getWeek();
@@ -66,8 +66,11 @@ public class CalendarsController {
           }
       }
 
+      int dayIndex = currentDate.getDayOfWeek().getValue() % 7;
+
       dayMap.put("month", currentDate.getMonthValue());
       dayMap.put("date", currentDate.getDayOfMonth());
+      dayMap.put("weekday", wdays[dayIndayMapdex]);
       dayMap.put("plans", todayPlans);
 
       weekDays.add(dayMap);
@@ -75,6 +78,4 @@ public class CalendarsController {
 
     return weekDays;
   }
-
-
 }
