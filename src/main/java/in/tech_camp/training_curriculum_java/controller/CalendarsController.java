@@ -27,7 +27,7 @@ public class CalendarsController {
   private final PlanRepository planRepository;
 
   // 1週間のカレンダーと予定が表示されるページ
-  @GetMapping("/")
+  @GetMapping("/calendars")
   public String index(Model model) {
     model.addAttribute("planForm", new PlanForm());
     List<Map<String, Object>> weekDays = get_week();
@@ -75,6 +75,4 @@ public class CalendarsController {
 
     return weekDays;
   }
-
-
 }
